@@ -1,0 +1,36 @@
+#sidebar{
+	-fx-background-color: linear-gradient(to bottom right,  #66c9ff, #0E4E80)
+
+}
+.table-view .column-header,
+.column-header-background .filler {
+	
+    -fx-background-color: #66c9ff;
+    -fx-padding:20px;
+
+}
+#totalprice{
+	-fx-background-color:linear-gradient(to bottom right,  #66c9ff, #0E4E80)
+}
+#productbtn{
+		-fx-background-color:linear-gradient(to bottom right,  #66c9ff, #0E4E80)
+}
+.addBobOk{
+        -fx-background-color:#32a852
+}
+.addBobOk:hover{
+
+        -fx-background-color:#64EE64;
+        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+        -fx-text-alignment: center;
+}
+.busy{
+
+        -fx-background-color:#B3B3B3; 
+        -fx-text-alignment: center;
+}
+.busy:hover{
+
+        -fx-background-color:cdcbcb;                       
+        -fx-text-alignment: center;
+}
