@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;application.companyModel&apos; to &apos;CompanyModel&apos;&#x0D;&#x0A;- Original project: &apos;hijaziManagementSystem&apos;&#x0D;&#x0A;- Original element: &apos;application.companyModel&apos;&#x0D;&#x0A;- Renamed element: &apos;application.CompanyModel&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;companyModel&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;application{companyModel.java[companyModel" matchStrategy="1" name="CompanyModel" qualified="false" references="true" similarDeclarations="false" stamp="1670185552825" textual="false" version="1.0"/>
+</session>
