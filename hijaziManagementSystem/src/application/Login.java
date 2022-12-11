@@ -1,11 +1,10 @@
 package application;
-	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Login extends Application {
@@ -21,7 +20,7 @@ public class Login extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

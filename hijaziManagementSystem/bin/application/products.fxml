@@ -17,9 +17,9 @@
       <TextField layoutX="78.0" layoutY="177.0" prefHeight="39.0" prefWidth="236.0" promptText="Product Name" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
       <TextField layoutX="386.0" layoutY="87.0" prefHeight="39.0" prefWidth="236.0" promptText="Product Price" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
       <TextField layoutX="386.0" layoutY="177.0" prefHeight="39.0" prefWidth="236.0" promptText="Product Quantity" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
-      <ComboBox layoutX="689.0" layoutY="87.0" prefHeight="39.0" prefWidth="236.0" promptText="Select Company" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
-      <ComboBox layoutX="689.0" layoutY="176.0" prefHeight="39.0" prefWidth="236.0" promptText="Select Supplier" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
-      <ComboBox layoutX="78.0" layoutY="268.0" prefHeight="39.0" prefWidth="236.0" promptText="Select Category" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
+      <ComboBox fx:id="companyData" layoutX="689.0" layoutY="87.0" prefHeight="39.0" prefWidth="236.0" promptText="Select Company" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
+      <ComboBox fx:id="supplierData" layoutX="689.0" layoutY="176.0" prefHeight="39.0" prefWidth="236.0" promptText="Select Supplier" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
+      <ComboBox fx:id="categoryData" layoutX="78.0" layoutY="268.0" prefHeight="39.0" prefWidth="236.0" promptText="Select Category" style="-fx-background-radius: 20px;; -fx-background-color: #F1F1F1;" />
       <TableView layoutX="78.0" layoutY="330.0" prefHeight="244.0" prefWidth="831.0" stylesheets="@sidebar.css">
         <columns>
           <TableColumn prefWidth="75.0" styleClass="table-view" text="Barcode" />

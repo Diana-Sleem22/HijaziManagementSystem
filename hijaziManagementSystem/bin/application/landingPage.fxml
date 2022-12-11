@@ -18,7 +18,7 @@
    <children>
       <AnchorPane layoutX="250.0" prefHeight="82.0" prefWidth="825.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <TextField layoutX="73.0" layoutY="21.0" prefHeight="39.0" prefWidth="370.0" promptText="Search" style="-fx-background-color: #F1F1F1; -fx-background-radius: 30px;">
+            <TextField layoutX="73.0" layoutY="21.0" prefHeight="39.0" prefWidth="283.0" promptText="ENTER USD RATE" style="-fx-background-color: #F1F1F1; -fx-background-radius: 30px;">
                <padding>
                   <Insets left="40.0" />
                </padding>
@@ -26,11 +26,6 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="86.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../icons/search.png" />
-               </image>
-            </ImageView>
             <Text fx:id="username" layoutX="720.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="24.6806640625">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -48,6 +43,14 @@
             </Label>
             <Text layoutX="653.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="39,500" />
             <Label fx:id="userName" layoutX="1005.0" layoutY="32.0" prefHeight="18.0" prefWidth="76.0" text="Diana Sleem" />
+            <Button layoutX="368.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #66c9ff; -fx-background-radius: 20px;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
          </children>
          <effect>
             <DropShadow>

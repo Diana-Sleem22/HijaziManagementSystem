@@ -1,9 +1,13 @@
 package application;
 
 import java.io.IOException;
-import java.lang.System.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,33 +36,35 @@ public class loginController implements Initializable {
     @FXML
     private Label emaillabel;
     @FXML
-    void login(javafx.event.ActionEvent actionEvent)throws IOException{
+    void login(javafx.event.ActionEvent actionEvent)throws IOException, ParseException{
      String txt1=email.getText();
      String txt2=password.getText();
-     if(txt1.equals("dianasleem@hotmail.com") && txt2.equals("12345")) {
+     int roleFK =combobox.getValue().equals("Admin") ? 1 : 3;
+
+	 JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/loginUser", "GET",txt1 + "/" + txt2 + "/" + roleFK , "");
+	 JSONArray responseData = (JSONArray)response.get("data");
+     if(!responseData.isEmpty()) {
     	 try {
- 			Parent root = FXMLLoader.load(getClass().getResource("ManagementSystem.fxml"));
+ 			Parent root = FXMLLoader.load(getClass().getResource("landingPage.fxml"));
  			Scene scene = new Scene(root);
  			 Stage primaryStage = new Stage();
  			primaryStage.setScene(scene);
  			primaryStage.setTitle("Hijazi Management System");
+// 			primaryStage.setUserData(responseData.get(0));
  			primaryStage.show();
  		} catch(Exception e) {
  			e.printStackTrace();
  		}
- 	
-     }else {
-    	 passwordlabel.setText("false");
-			
+
      }
-     
+
     }
-    
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	String [] users= {"Admin","Seller"};
 	combobox.getItems().addAll(users);
-		
+
 	}
-	
+
 }

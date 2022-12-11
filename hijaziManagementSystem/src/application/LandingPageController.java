@@ -1,13 +1,7 @@
 package application;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 public class LandingPageController implements Initializable {
@@ -184,7 +176,7 @@ public class LandingPageController implements Initializable {
 		    }
 		    @FXML
 		    void  backup(javafx.event.ActionEvent actionEvent)throws IOException {
-		    	
+
 				product.setStyle("-fx-background-color: transparent; ");
 				billing.setStyle("-fx-background-color: transparent; ");
 				company.setStyle("-fx-background-color: transparent; ");
@@ -196,21 +188,21 @@ public class LandingPageController implements Initializable {
 				supplier.setStyle("-fx-background-color:transparent; ");
 				stock.setStyle("-fx-background-color: transparent; ");
 		    }
-	
+
 			@Override
 			public void initialize(URL arg0, ResourceBundle arg1) {
-				
+				System.out.println("userLogin " + UserSingletonInstance.getInstance());
 				try {
-				
+
 					Parent root = FXMLLoader.load(getClass().getResource("billing.fxml"));
 					contentArea.getChildren().removeAll();
 					contentArea.getChildren().setAll(root);
-					
+
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-			}		   
-			
+
+			}
+
 }
