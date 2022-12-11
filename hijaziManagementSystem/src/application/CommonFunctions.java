@@ -2,9 +2,8 @@ package application;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -18,15 +17,18 @@ public class CommonFunctions {
 		JSONArray jsonArray = null;
 		StringBuilder stringBuilder = new StringBuilder();
 		  String jsonString = "";
+		  if(requestMethod.equals("DELETE") || requestMethod.equals("GET")) {
+			  targetURL += "/"+urlParameters;
+		  }
 		URL obj = new URL(targetURL);
+
 		  HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-		 
-		        // Setting basic post request
+
 		  con.setRequestMethod(requestMethod);
 		  con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 		  con.setRequestProperty("Content-Type","application/json");
-		 
-		 
+
+
 		  // Send post request
 		  con.setDoOutput(true);
 		  if(requestMethod.equals("POST")) {
@@ -35,26 +37,30 @@ public class CommonFunctions {
 			  wr.flush();
 			  wr.close();
 		  }
-		 
+		  if(requestMethod.equals("PUT")) {
+			  OutputStreamWriter  streamWriter = new OutputStreamWriter (con.getOutputStream());
+			  streamWriter.write(body);
+		        streamWriter.flush();
+		  }
 		  int responseCode = con.getResponseCode();
 		  System.out.println("nSending " + requestMethod + " request to URL : " + targetURL);
 		  System.out.println("Post Data : " + body);
 		  System.out.println("Response Code : " + responseCode);
-		 
+
 		  BufferedReader in = new BufferedReader(
 		          new InputStreamReader(con.getInputStream()));
 		  String output;
 		  StringBuffer response = new StringBuffer();
-		 
+
 		  if(requestMethod.equals("GET")) {
 			  while ((output = in.readLine()) != null) {
 				   response.append(output);
 					    stringBuilder.append(output + '\n');
 				  }
-				 
+
 				  jsonString = stringBuilder.toString();
 				  JSONParser parser = new JSONParser();
-				  Object object = (Object) parser.parse(jsonString);
+				  Object object = parser.parse(jsonString);
 		           jsonArray = (JSONArray) object;
 				  in.close();
 		  }
@@ -64,5 +70,5 @@ public class CommonFunctions {
 		  //printing result from response
 //		  System.out.println(response.toString());
 		return data;
-		}	
+		}
 }

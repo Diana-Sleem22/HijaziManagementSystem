@@ -48,7 +48,7 @@
       </PasswordField>
       <CheckBox fx:id="admin" layoutX="249.0" layoutY="467.0" mnemonicParsing="false" text="Admin" textFill="#030303" />
       <CheckBox fx:id="seller" layoutX="360.0" layoutY="467.0" mnemonicParsing="false" text="Seller" />
-      <Button fx:id="login" layoutX="230.0" layoutY="536.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="203.0" style="-fx-background-color: #66c9ff; -fx-background-radius: 20px;" text="Add" textFill="WHITE">
+      <Button fx:id="registerBtn" layoutX="230.0" layoutY="536.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="39.0" prefWidth="203.0" style="-fx-background-color: #66c9ff; -fx-background-radius: 20px;" text="Add" textFill="WHITE">
          <font>
             <Font name="Book Antiqua Bold" size="22.0" />
          </font>

@@ -1,0 +1,81 @@
+package application;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class supplierController implements Initializable{
+	  @FXML
+	    private TextField firstname;
+
+	    @FXML
+	    private TableColumn<SupplierModel, String> firstnameColumn;
+
+	    @FXML
+	    private TextField lastname;
+
+	    @FXML
+	    private TableColumn<SupplierModel, String> lastnameColumn;
+
+	    @FXML
+	    private TextField phoneNumber;
+
+	    @FXML
+	    private TableColumn<SupplierModel, String> phonenumberColumn;
+
+	    @FXML
+	    private TextField searchtxt;
+
+	    @FXML
+	    private TableView<SupplierModel> supplierTable;
+	    private ObservableList< SupplierModel> data =  FXCollections.observableArrayList();	
+	    @FXML
+	    void addSupplier(ActionEvent event) throws IOException, ParseException{
+	    	SupplierModel sm = new SupplierModel(firstname.getText(),lastname.getText(),phoneNumber.getText());
+	    	System.out.println(sm.toString());
+	    	  CommonFunctions.sendHTTPRequest("http://localhost:8080/registerUser", "POST","", sm.toString());
+	    		data.add( new SupplierModel(firstname.getText().toString(),lastname.getText().toString(),phoneNumber.getText().toString()));
+	    		supplierTable.setItems(data);  
+	    }
+
+	    @FXML
+	    void deleteSupplier(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void updateSupplier(ActionEvent event) {
+
+	    }
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
+}

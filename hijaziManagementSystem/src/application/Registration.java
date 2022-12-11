@@ -19,7 +19,7 @@ public class Registration extends Application{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

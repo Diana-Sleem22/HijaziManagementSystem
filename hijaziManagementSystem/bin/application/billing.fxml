@@ -3,16 +3,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="982.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.billingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="991.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.billingController">
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="74.0" prefWidth="982.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.39999999999997726" AnchorPane.topAnchor="-1.0">
          <children>
@@ -43,7 +45,7 @@
             <Button layoutX="899.0" layoutY="16.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="54.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 40px;" />
             <ImageView fitHeight="26.0" fitWidth="54.0" layoutX="913.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../icons/printer.png" />
+                  <Image url="@../../icons/bill.png" />
                </image>
             </ImageView>
             <ComboBox layoutX="399.0" layoutY="16.0" prefHeight="39.0" prefWidth="312.0" promptText="CUSTOMERS" style="-fx-background-color: #F1F1F1; -fx-background-radius: 20px;" />
@@ -51,21 +53,10 @@
             <Text fill="#868181" layoutX="413.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Customer" />
             <Text fill="#868181" layoutX="725.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Customer" />
             <Text fill="#868181" layoutX="820.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Order" />
-            <Text fill="#868181" layoutX="893.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Print Invoice" />
+            <Text fill="#868181" layoutX="899.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add to Bill" wrappingWidth="107.33319091796875" />
          </children>
       </AnchorPane>
-      <TextField alignment="CENTER" layoutX="105.0" layoutY="106.0" prefHeight="39.0" prefWidth="76.0" style="-fx-background-color: #F1F1F1;" text="0" />
-      <DatePicker layoutX="294.0" layoutY="106.0" prefHeight="39.0" prefWidth="312.0" style="-fx-background-color: #F1F1F1;" />
-      <ImageView fitHeight="26.0" fitWidth="39.0" layoutX="190.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/plus%20(2).png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="39.0" layoutX="68.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/minus.png" />
-         </image>
-      </ImageView>
+      <DatePicker layoutX="294.0" layoutY="106.0" prefHeight="39.0" prefWidth="242.0" style="-fx-background-color: #F1F1F1;" />
       <AnchorPane id="totalprice" layoutX="42.0" layoutY="545.0" prefHeight="92.0" prefWidth="421.0" stylesheets="@sidebar.css">
          <children>
             <Text fill="WHITE" layoutX="56.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL PRICE">
@@ -95,20 +86,108 @@
             </Text>
          </children>
       </AnchorPane>
-      <TableView layoutX="42.0" layoutY="254.0" prefHeight="200.0" prefWidth="909.0" stylesheets="@sidebar.css">
+      <TableView layoutX="42.0" layoutY="254.0" prefHeight="200.0" prefWidth="526.0" stylesheets="@sidebar.css">
         <columns>
           <TableColumn fx:id="products" prefWidth="226.3999900817871" text="Products" />
           <TableColumn fx:id="barcode" minWidth="0.0" prefWidth="226.3999900817871" text="Barcode" />
             <TableColumn fx:id="quantity" minWidth="0.0" prefWidth="226.3999900817871" text="Qnt" />
             <TableColumn fx:id="unitprice" minWidth="0.0" prefWidth="229.60000000000002" text="Unit Price" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Button id="productbtn" layoutX="820.0" layoutY="579.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Clear" textFill="WHITE">
+      <Button id="productbtn" layoutX="766.0" layoutY="571.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="156.0" stylesheets="@sidebar.css" text="Print Invoice" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="16.0" />
          </font>
       </Button>
-      <Text fill="#868181" layoutX="99.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Quantity" />
+      <Text fill="#868181" layoutX="74.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Quantity" />
       <Text fill="#868181" layoutX="294.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Date" />
+      <Button id="productbtn" layoutX="574.0" layoutY="571.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Button>
+      <Pane layoutX="602.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="374.0" style="-fx-border-color: black;">
+         <children>
+            <Label layoutX="128.0" layoutY="36.0" text="Hijazi Foundation">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="86.0" prefHeight="26.0" prefWidth="96.0" text="Invoice No ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="89.0" text="4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="119.0" text="Customer Name ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="355.0" layoutY="91.0" />
+            <Label layoutX="139.0" layoutY="119.0" text="Diana Sleem">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="152.0" text="Cashier Name ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="139.0" layoutY="152.0" text="Zainab Nassar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView layoutX="16.0" layoutY="192.0" prefHeight="144.0" prefWidth="338.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text=" Name" />
+                <TableColumn prefWidth="75.0" text="Price" />
+                  <TableColumn prefWidth="75.0" text="Qty" />
+                  <TableColumn prefWidth="75.0" text="Total" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label layoutX="212.0" layoutY="350.0" text="Total">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="121.0" layoutY="416.0" text="Thank You Come Again" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label fx:id="value" layoutX="116.0" layoutY="117.0" text="0" />
+      <Button layoutX="149.0" layoutY="109.0" mnemonicParsing="false" onAction="#increase">
+         <graphic>
+            <ImageView fx:id="increaseBtn" fitHeight="26.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/plus%20(2).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="42.0" layoutY="109.0" mnemonicParsing="false" onAction="#decrease">
+         <graphic>
+            <ImageView fx:id="decreaseBtn" fitHeight="26.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/minus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

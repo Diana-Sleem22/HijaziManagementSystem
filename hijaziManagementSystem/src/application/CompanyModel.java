@@ -1,8 +1,8 @@
 package application;
 
 public class CompanyModel {
-	  public int id;
-	    public String name; 
+	  public Integer id;
+	    public String name;
 	    public String phone;
 		public String getName() {
 			return name;
@@ -13,7 +13,7 @@ public class CompanyModel {
 		public String getPhone() {
 			return phone;
 		}
-		public CompanyModel(String name, String phone,int id) {
+		public CompanyModel(String name, String phone,Integer id) {
 			this.name = name;
 			this.phone = phone;
 			this.id = id;
@@ -21,19 +21,19 @@ public class CompanyModel {
 		public CompanyModel(String name, String phone) {
 			this.name = name;
 			this.phone = phone;
-			
+
 		}
 		@Override
 		public String toString() {
-			return "{\"name\":\"" + name + "\", \"phone\":\"" + phone + "\"}";
+			return "{\"name\":\"" + name + "\", \"phone\":\"" + phone + "\" , \"id\":" + id + "}";
 		}
 		public void setPhone(String phone) {
 			this.phone = phone;
 		}
-		public int getId() {
+		public Integer getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(Integer id) {
 			this.id = id;
 		}
 
