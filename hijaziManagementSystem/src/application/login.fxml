@@ -79,6 +79,6 @@
       </ImageView>
       <Label fx:id="emaillabel" layoutX="334.0" layoutY="283.0" prefHeight="17.0" prefWidth="258.0" textFill="#b71616" />
       <Label fx:id="passwordlabel" layoutX="334.0" layoutY="367.0" prefHeight="17.0" prefWidth="258.0" textFill="#b71616" />
-      <Label fx:id="usertype" layoutX="377.0" layoutY="190.0" prefHeight="17.0" prefWidth="150.0" textFill="RED" />
+      <Label fx:id="usertype" layoutX="382.0" layoutY="185.0" prefHeight="17.0" prefWidth="150.0" textFill="RED" />
    </children>
 </Pane>

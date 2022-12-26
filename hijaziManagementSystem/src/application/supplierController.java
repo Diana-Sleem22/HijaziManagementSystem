@@ -119,12 +119,12 @@ public class supplierController implements Initializable{
 }
 		 public void searchCompanyByName (String text) throws IOException, ParseException {
 			 String url = "";
-//			 if(text.equals("")) {
-//				 url = "http://localhost:8080/getAllSuppliers";
-//			 }
-//			 else {
-//				 url = "http://localhost:8080/searchCompanies";
-//			 }
+			 if(text.equals("")) {
+				 url = "http://localhost:8080/getAllSuppliers";
+			 }
+			 else {
+				 url = "http://localhost:8080/searchSupplier";
+			 }
 			 url = "http://localhost:8080/getAllSuppliers";
 		    	JSONObject responseAPI = CommonFunctions.sendHTTPRequest(url, "GET", text, "");
 
