@@ -50,11 +50,7 @@ public class LandingPageController implements Initializable {
 	    @FXML
 	    private Button logout;
 	    
-	    @FXML
-	    void logout(ActionEvent event) {
-
-	    }
-
+	
 	    
 	    @FXML
 		    void BillingPage(javafx.event.ActionEvent actionEvent) throws IOException {

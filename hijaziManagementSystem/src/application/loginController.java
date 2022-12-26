@@ -108,18 +108,5 @@ else {
        
         return false;
     }
-	private boolean isExistingPassword(String pass) throws IOException, ParseException {
-	    String txt1 = email.getText();
-	    String txt2 = password.getText();
-	    int roleFK = combobox.getValue().equals("Admin") ? 1 : 3;
-	    JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/loginUser", "GET", txt1 + "/" + txt2 + "/" + roleFK, "");
-	    JSONArray responseData = (JSONArray) response.get("data");
-	    for (int i = 0; i < responseData.size(); i++) {
-	        JSONObject new_obj = (JSONObject) responseData.get(i);
-	        if (new_obj.get("password").equals(pass)) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
+
 }

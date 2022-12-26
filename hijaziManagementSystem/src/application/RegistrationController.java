@@ -136,17 +136,5 @@ else {
 }
 
     }
-    public static boolean isValidPassword(String password) {
-	    String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\w\\s]).{8,16}$";
-	    Pattern pattern = Pattern.compile(regex);
-	    Matcher matcher = pattern.matcher(password);
-	    return matcher.matches();
-	}
-	
-	public static boolean isValidEmail(String email) {
-	    String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-	    Pattern pattern = Pattern.compile(regex);
-	    Matcher matcher = pattern.matcher(email);
-	    return matcher.matches();
-	}
+
 }
