@@ -12,11 +12,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 public class supplierController implements Initializable{
 	  @FXML
 	    private TextField firstname;
@@ -96,6 +100,8 @@ public class supplierController implements Initializable{
 			System.out.print(data);
 
 			supplierTable.setItems(data);
+			
+		      
 			supplierTable.setOnMouseClicked((MouseEvent event) -> {
 			    if (event.getClickCount() > 1) {
 			        onEdit();
@@ -108,7 +114,7 @@ public class supplierController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 
 }
 		 public void searchCompanyByName (String text) throws IOException, ParseException {
