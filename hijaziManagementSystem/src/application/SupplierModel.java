@@ -91,6 +91,6 @@ public class SupplierModel {
 	public String toString() {
 		return "{\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname +
 				"\", \"email\":\"" +""+"\", \"address\":\"" + ""+ "\", \"phoneNumber\":\"" + phoneNumber+
-				"\", \"password\":\"" +password+"\", \"roleFK\":" +2+",\"id\":" + id+"}";
+				"\", \"password\":\"" +"null"+"\", \"roleFK\":" +2+",\"id\":" + id+"}";
 	}
 }

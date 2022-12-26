@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,6 +49,13 @@ public class LandingPageController implements Initializable {
 
 	    @FXML
 	    private Button logout;
+	    
+	    @FXML
+	    void logout(ActionEvent event) {
+
+	    }
+
+	    
 	    @FXML
 		    void BillingPage(javafx.event.ActionEvent actionEvent) throws IOException {
 				Parent root = FXMLLoader.load(getClass().getResource("billing.fxml"));

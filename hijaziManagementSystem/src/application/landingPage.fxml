@@ -147,7 +147,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="logout" layoutX="65.0" layoutY="746.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="122.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
+            <Button fx:id="logout" layoutX="65.0" layoutY="746.0" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="122.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
