@@ -56,7 +56,7 @@
          </font>
       </Label>
       <TextField fx:id="searchtxt" layoutX="388.0" layoutY="14.0" prefHeight="39.0" prefWidth="236.0" promptText="SEARCH" style="-fx-background-color: #F1F1F1; -fx-background-radius: 20px;" />
-      <ImageView fitHeight="17.0" fitWidth="32.0" layoutX="599.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="17.0" fitWidth="32.0" layoutX="591.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/magnifying-glass.png" />
          </image>
