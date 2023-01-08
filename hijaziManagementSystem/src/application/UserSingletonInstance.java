@@ -1,20 +1,29 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserSingletonInstance {
-	private  static UserSingletonInstance user = null;
-	public Integer id;
-	public static String firstname;
-	public static String lastname;
-	public static String email;
-	public static String address;
-	public static String phoneNumber;
-	public static String password;
-	public  static Integer roleFK;
-	public static void setUser(UserSingletonInstance userLogin) {
-		user = userLogin;
+	private  static UserSingletonInstance user;
+	private Integer id;
+	private String firstname;
+	private  String lastname;
+	private  String email;
+	private  String address;
+	private  String phoneNumber;
+	private  String password;
+	private   Integer roleFK;
+    private List<String> accessRights = new ArrayList<>();
+
+
+	public List<String> getAccessRights() {
+		return accessRights;
 	}
-	public UserSingletonInstance() {
-		
+	public void setAccessRights(List<String> accessRights) {
+		this.accessRights = accessRights;
+	}
+	private UserSingletonInstance() {
+
 	}
 	 public static UserSingletonInstance getInstance() {
 		 if(user == null) {
@@ -22,34 +31,10 @@ public class UserSingletonInstance {
 		 }
 		 return user;
 	 }
-	 
-	
-	 public UserSingletonInstance(String firstname, String lastname, String email, String address,
-				String phoneNumber, String password, Integer roleFK) {
 
 
-			UserSingletonInstance.firstname = firstname;
-			UserSingletonInstance.lastname = lastname;
-			UserSingletonInstance.email = email;
-			UserSingletonInstance.address = address;
-			UserSingletonInstance.phoneNumber = phoneNumber;
-			UserSingletonInstance.password = password;
-			UserSingletonInstance.roleFK = roleFK;
-		}
-	 public UserSingletonInstance(String firstname, String lastname, String email, String address,
-				String phoneNumber, Integer roleFK) {
 
 
-		 UserSingletonInstance.firstname = firstname;
-			UserSingletonInstance.lastname = lastname;
-			UserSingletonInstance.email = email;
-			UserSingletonInstance.address = address;
-			UserSingletonInstance.phoneNumber = phoneNumber;
-			UserSingletonInstance.roleFK = roleFK;
-			
-			
-		}
-		
 	public Integer getId() {
 		return id;
 	}
@@ -97,6 +82,14 @@ public class UserSingletonInstance {
 	}
 	public void setRoleFK(Integer roleFK) {
 		this.roleFK = roleFK;
+	}
+	public void reserUser() {
+		user.setFirstname("");
+		user.setLastname("");
+		accessRights.clear();
+		user.setAccessRights(accessRights);
+		user.setRoleFK(-1);
+
 	}
 	@Override
 	public String toString() {

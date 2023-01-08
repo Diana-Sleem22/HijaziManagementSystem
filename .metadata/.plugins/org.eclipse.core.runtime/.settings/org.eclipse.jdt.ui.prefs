@@ -1,9 +1,8 @@
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="application.UserModel"><rhs name\="application.UserModel"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="application.UserModel"><rhs name\="application.UserModel"/></lhs><lhs name\="java.lang.constant.Constable"><rhs name\="java.lang.Integer"/><rhs name\="javafx.scene.control.Alert$AlertType"/></lhs><lhs name\="java.lang.constant.ConstantDesc"><rhs name\="java.lang.Integer"/></lhs><lhs name\="java.lang.Number"><rhs name\="java.lang.Integer"/></lhs><lhs name\="application.CompanyModel"><rhs name\="application.CompanyModel"/></lhs><lhs name\="application.CategoryModel"><rhs name\="application.CategoryModel"/></lhs><lhs name\="application.SupplierModel"><rhs name\="application.SupplierModel"/></lhs><lhs name\="java.lang.Enum"><rhs name\="javafx.scene.control.Alert$AlertType"/></lhs></history>
 content_assist_number_of_computers=15
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0
 eclipse.preferences.version=1
-markOccurrences=false
 org.eclipse.jdt.internal.ui.navigator.layout=2
 org.eclipse.jdt.internal.ui.navigator.librariesnode=true
 org.eclipse.jdt.ui.formatterprofiles.version=22

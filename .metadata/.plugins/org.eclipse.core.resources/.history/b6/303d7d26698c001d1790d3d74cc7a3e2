@@ -1,0 +1,40 @@
+package application;
+
+public class orderInvoice {
+
+	private Integer id; 
+	private String date;
+	private String assigneeName;
+	private String customerName;
+	public orderInvoice(Integer id, String date, String assigneeName, String customerName) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.assigneeName = assigneeName;
+		this.customerName = customerName;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getAssigneeName() {
+		return assigneeName;
+	}
+	public void setAssigneeName(String assigneeName) {
+		this.assigneeName = assigneeName;
+	}
+	public String getCustomerName() {
+		return customerName;
+	}
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+}

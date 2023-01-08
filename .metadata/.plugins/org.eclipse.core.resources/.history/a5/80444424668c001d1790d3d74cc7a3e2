@@ -1,0 +1,68 @@
+package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+
+public class orderController implements Initializable {
+
+	
+
+	    @FXML
+	    private TableColumn<?, ?> orderAssignee;
+
+	    @FXML
+	    private TableColumn<?, ?> orderDate;
+
+	    @FXML
+	    private DatePicker orderForDate;
+
+	    @FXML
+	    private TableColumn<?, ?> orderNumber;
+
+	    @FXML
+	    private TableColumn<?, ?> orderOwner;
+
+	    @FXML
+	    private TableView<?> ordersTable;
+		private ObservableList<CategoryModel> data = FXCollections.observableArrayList();
+
+	    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		orderAssignee.setCellValueFactory(new PropertyValueFactory("orderAssignee"));
+		orderDate.setCellValueFactory(new PropertyValueFactory("orderDate"));
+		orderNumber.setCellValueFactory(new PropertyValueFactory("orderNumber"));
+		orderOwner.setCellValueFactory(new PropertyValueFactory("orderOwner"));
+		
+		
+		ordersTable.setOnMouseClicked((MouseEvent event) -> {
+			if (event.getClickCount() > 1) {
+				onEdit();
+			}
+		});
+
+	}
+	
+	public void onEdit() {
+		// check the table's selected item and get selected item
+		if (ordersTable.getSelectionModel().getSelectedItem() != null) {
+
+			selectedProduct = ordersTable.getSelectionModel().getSelectedItem();
+			
+
+		}
+	}
+
+
+}

@@ -25,17 +25,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button id="productbtn" fx:id="add" layoutX="144.0" layoutY="537.0" mnemonicParsing="false" onAction="#add" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="ADD" textFill="WHITE">
+      <Button id="productbtn" fx:id="add" layoutX="314.0" layoutY="537.0" mnemonicParsing="false" onAction="#add" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="ADD" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="16.0" />
          </font>
       </Button>
-      <Button id="productbtn" fx:id="update" layoutX="771.0" layoutY="537.0" mnemonicParsing="false" onAction="#update" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Update" textFill="WHITE">
-         <font>
-            <Font name="Arial Black" size="16.0" />
-         </font>
-      </Button>
-      <Button id="productbtn" fx:id="delete" layoutX="476.0" layoutY="537.0" mnemonicParsing="false" onAction="#delete" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Delete" textFill="WHITE">
+      <Button id="productbtn" fx:id="update" layoutX="528.0" layoutY="537.0" mnemonicParsing="false" onAction="#update" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="16.0" />
          </font>
@@ -68,5 +63,9 @@
             <Image url="@../../icons/magnifying-glass.png" />
          </image>
       </ImageView>
+      <Label fx:id="firstNameError" layoutX="173.0" layoutY="99.0" prefHeight="18.0" prefWidth="150.0" textFill="#ec0909" />
+      <Label fx:id="lastNameError" layoutX="432.0" layoutY="99.0" prefHeight="18.0" prefWidth="150.0" textFill="#ec0909" />
+      <Label fx:id="addressError" layoutX="716.0" layoutY="99.0" prefHeight="18.0" prefWidth="150.0" textFill="#ec0909" />
+      <Label fx:id="phoneNumberError" layoutX="154.0" layoutY="219.0" prefHeight="18.0" prefWidth="150.0" textFill="#ec0909" />
    </children>
 </AnchorPane>

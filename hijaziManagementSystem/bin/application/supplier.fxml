@@ -24,17 +24,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button id="productbtn" layoutX="136.0" layoutY="561.0" mnemonicParsing="false" onAction="#addSupplier" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="ADD" textFill="WHITE">
+      <Button id="productbtn" layoutX="287.0" layoutY="561.0" mnemonicParsing="false" onAction="#addSupplier" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="ADD" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="16.0" />
          </font>
       </Button>
-      <Button id="productbtn" layoutX="763.0" layoutY="561.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Update" textFill="WHITE">
-         <font>
-            <Font name="Arial Black" size="16.0" />
-         </font>
-      </Button>
-      <Button id="productbtn" layoutX="468.0" layoutY="561.0" mnemonicParsing="false" onAction="#deleteSupplier" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Delete" textFill="WHITE">
+      <Button id="productbtn" layoutX="534.0" layoutY="561.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="67.0" prefWidth="131.0" stylesheets="@sidebar.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="16.0" />
          </font>
@@ -56,7 +51,7 @@
          </font>
       </Label>
       <TextField fx:id="searchtxt" layoutX="388.0" layoutY="14.0" prefHeight="39.0" prefWidth="236.0" promptText="SEARCH" style="-fx-background-color: #F1F1F1; -fx-background-radius: 20px;" />
-      <ImageView fitHeight="17.0" fitWidth="32.0" layoutX="599.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="17.0" fitWidth="32.0" layoutX="591.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/magnifying-glass.png" />
          </image>

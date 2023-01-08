@@ -1,0 +1,86 @@
+package application;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class orderItemsDetails {
+	private static List<orderItemsDetails> instance = null;
+	private Integer quantity;
+	private Integer price;
+	private String name;
+	private Integer totalPriceLbp;
+	private Integer totalPriceUsd;
+
+	public static List<orderItemsDetails> getInstance() {
+		if (instance == null) {
+			instance = new ArrayList<orderItemsDetails>();
+		}
+		return instance;
+	}
+
+	public orderItemsDetails() {
+		super();
+	}
+
+	public Integer getTotalPriceLbp() {
+		return totalPriceLbp;
+	}
+
+	public void setTotalPriceLbp(Integer totalPriceLbp) {
+		this.totalPriceLbp = totalPriceLbp;
+	}
+
+	public Integer getTotalPriceUsd() {
+		return totalPriceUsd;
+	}
+
+	public void setTotalPriceUsd(Integer totalPriceUsd) {
+		this.totalPriceUsd = totalPriceUsd;
+	}
+
+	public orderItemsDetails(Integer quantity, Integer price, String name, Integer totalPriceLbp,
+			Integer totalPriceUsd) {
+		super();
+		this.quantity = quantity;
+		this.price = price;
+		this.name = name;
+		this.totalPriceLbp = totalPriceLbp;
+		this.totalPriceUsd = totalPriceUsd;
+	}
+
+	public orderItemsDetails(Integer quantity, Integer price, String name) {
+		super();
+		this.quantity = quantity;
+		this.price = price;
+		this.name = name;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "{\"productName\":\"" + name + "\", \"quantity\":" + quantity + ", \"price\":" + price + "}";
+	}
+}

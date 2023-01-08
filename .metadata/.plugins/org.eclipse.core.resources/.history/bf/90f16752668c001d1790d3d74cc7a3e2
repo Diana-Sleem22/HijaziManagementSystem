@@ -1,0 +1,9 @@
+package application;
+
+public class orderInvoice {
+
+	private Integer id; 
+	private String date;
+	private String assigneeName;
+	private String customerName;
+}

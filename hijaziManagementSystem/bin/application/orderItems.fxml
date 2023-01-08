@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="1071.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.orderController">
+   <children>
+      <TableView fx:id="orderItemsTable" layoutX="115.0" layoutY="199.0" prefHeight="244.0" prefWidth="758.0" stylesheets="@sidebar.css">
+        <columns>
+          <TableColumn fx:id="productNameColumn" prefWidth="75.0" text="Product Name" />
+          <TableColumn fx:id="QuantityColumn" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="totalPriceColumn" prefWidth="75.0" text="Total Price" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

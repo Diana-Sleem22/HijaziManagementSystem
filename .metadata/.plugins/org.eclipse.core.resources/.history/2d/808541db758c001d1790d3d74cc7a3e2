@@ -1,0 +1,140 @@
+package application;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+public class orderController implements Initializable {
+	orderInvoice oi = null;
+	@FXML
+	private TableColumn<?, ?> orderAssignee;
+
+	@FXML
+	private TableColumn<?, ?> orderDate;
+
+	@FXML
+	private DatePicker orderForDate;
+
+	@FXML
+	private TableColumn<?, ?> orderNumber;
+
+	@FXML
+	private TableColumn<?, ?> orderOwner;
+	@FXML
+	private TableColumn<?, ?> QuantityColumn;
+
+	@FXML
+	private TableView<orderItemsDetails> orderItemsTable;
+
+	@FXML
+	private TableColumn<?, ?> priceColumn;
+
+	@FXML
+	private TableColumn<?, ?> productNameColumn;
+
+	@FXML
+	private TableColumn<?, ?> totalPriceColumn;
+	@FXML
+	private TableView<orderInvoice> ordersTable;
+	private ObservableList<orderInvoice> data = FXCollections.observableArrayList();
+	private ObservableList<orderItemsDetails> orderItems = FXCollections.observableArrayList();
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		try {
+			getAllOrders();
+			// TODO Auto-generated method stub
+			orderNumber.setCellValueFactory(new PropertyValueFactory("orderName"));
+			orderAssignee.setCellValueFactory(new PropertyValueFactory("assigneeName"));
+			orderOwner.setCellValueFactory(new PropertyValueFactory("customerName"));
+			orderDate.setCellValueFactory(new PropertyValueFactory("date"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		ordersTable.setOnMouseClicked((MouseEvent event) -> {
+			if (event.getClickCount() > 1) {
+				try {
+					onEdit();
+				} catch (IOException | ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+
+	void getAllOrders() throws IOException, ParseException {
+		JSONObject responseAPI;
+
+		responseAPI = CommonFunctions.sendHTTPRequest("http://localhost:8080/getOrders", "GET", "", "");
+		JSONArray arr = (JSONArray) responseAPI.get("data");
+
+		for (Object element : arr) {
+			JSONObject new_obj = (JSONObject) element;
+
+			data.add(new orderInvoice(Integer.parseInt(new_obj.get("id") + ""), "order#" + new_obj.get("id") + "",
+					new_obj.get("assigneeName") + "", new_obj.get("customerName") + "", new_obj.get("date") + ""));
+		}
+		ordersTable.setItems(data);
+	}
+
+	public void onEdit() throws IOException, ParseException {
+		// check the table's selected item and get selected item
+		if (ordersTable.getSelectionModel().getSelectedItem() != null) {
+			int id = ordersTable.getSelectionModel().getSelectedItem().getOrderID();
+			JSONObject responseAPI;
+
+			responseAPI = CommonFunctions.sendHTTPRequest("http://localhost:8080/getOrderItems", "GET", id + "", "");
+			JSONArray arr = (JSONArray) responseAPI.get("data");
+
+			for (Object element : arr) {
+				JSONObject new_obj = (JSONObject) element;
+
+				orderItems.add(new orderItemsDetails(Integer.parseInt(new_obj.get("quantity") + ""),
+						Integer.parseInt(new_obj.get("price") + ""), new_obj.get("name") + ""));
+
+			}
+			try {
+				FXMLLoader root = new FXMLLoader(getClass().getResource("orderItems.fxml"));
+				Parent root1 = (Parent) root.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root1));
+				stage.setTitle("Customers");
+				stage.show();
+				productNameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+				QuantityColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
+				priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
+				totalPriceColumn.setCellValueFactory(new PropertyValueFactory("totalPriceUsd"));
+				orderItemsTable.setItems(orderItems);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
