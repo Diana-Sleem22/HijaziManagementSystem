@@ -4,6 +4,7 @@ module hijaziMangSystem {
 	requires javafx.fxml;
 	requires javafx.base;
 	requires json.simple;
+	requires java.sql;
 
 
 	opens application to javafx.graphics, javafx.fxml;

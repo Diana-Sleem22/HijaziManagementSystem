@@ -10,7 +10,7 @@ public class UserLoginModel {
 	 private String phoneNumber;
 	 private String password;
 	 private Integer roleFK;
-	 
+
 
 		public UserLoginModel(String firstname, String lastname, Integer roleFK
 				) {

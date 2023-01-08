@@ -1,0 +1,459 @@
+package application;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+
+public class productsController implements Initializable {
+	ProductModel selectedProduct;
+
+	@FXML
+	private Button category;
+	@FXML
+	private ComboBox<CategoryModel2> categoryData;
+	@FXML
+	private ComboBox<CompanyModel> companyData;
+	List<String> companies = new ArrayList<>();
+	List<CategoryModel2> categories = new ArrayList<>();
+	List<SupplierModel> suppliers = new ArrayList<>();
+
+	@FXML
+	private ComboBox<SupplierModel> supplierData;
+	@FXML
+	private Button add_product;
+	@FXML
+	private TextField product_name;
+
+	@FXML
+	private TextField product_price;
+
+	@FXML
+	private TextField product_qty;
+	@FXML
+	private TextField barcode;
+	@FXML
+	private TableColumn<ProductModel, String> barcodeColumn;
+	@FXML
+	private TableColumn<ProductModel, Integer> categoryColumn;
+	@FXML
+	private TableColumn<ProductModel, Integer> companyColumn;
+	@FXML
+	private TableColumn<ProductModel, String> nameColumn;
+
+	@FXML
+	private TableColumn<ProductModel, Integer> priceColumn;
+	@FXML
+	private TableColumn<ProductModel, Integer> qtyColumn;
+
+	@FXML
+	private TableColumn<ProductModel, Integer> supplierColumn;
+	@FXML
+	private TableView<ProductModel> productsTable;
+	@FXML
+	private ImageView searchProductIcon;
+	@FXML
+	private Button deleteProductBtn;
+	@FXML
+	private Button updateProductBtn;
+	@FXML
+	private TextField searchProductText;
+	private ObservableList<CategoryModel> data = FXCollections.observableArrayList();
+	private ObservableList<ProductModel> productsData = FXCollections.observableArrayList();
+
+//	@FXML
+//	void addCategory(javafx.event.ActionEvent actionEvent) throws IOException {
+//		try {
+//			FXMLLoader root = new FXMLLoader(getClass().getResource("Categories.fxml"));
+//			Parent root1 = (Parent) root.load();
+//			Stage stage = new Stage();
+//			stage.setScene(new Scene(root1));
+//			stage.setTitle("Categories");
+//			stage.show();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+
+	@FXML
+	void deleteProduct(ActionEvent event) throws IOException, ParseException {
+		CommonFunctions.sendHTTPRequest("http://localhost:8080/deleteProduct", "DELETE", selectedProduct.getId() + "",
+				selectedProduct.toString());
+		int index = productsData.indexOf(selectedProduct);
+		productsData.remove(index);
+
+		productsTable.setItems(productsData);
+	}
+
+	public void categoryData() {
+		try {
+			JSONObject responseAPI = CommonFunctions.sendHTTPRequest("http://localhost:8080/getAllCategories", "GET",
+					"", "");
+			JSONArray arr = (JSONArray) responseAPI.get("data");
+			for (Object element : arr) {
+				JSONObject new_obj = (JSONObject) element;
+				categoryData.getItems().add(new CategoryModel2(Integer.parseInt(new_obj.get("id").toString()),
+						new_obj.get("name").toString()));
+				categories.add(new CategoryModel2(Integer.parseInt(new_obj.get("id").toString()),
+						new_obj.get("name").toString()));
+			}
+			categoryData.setCellFactory(new Callback<ListView<CategoryModel2>, ListCell<CategoryModel2>>() {
+
+				@Override
+				public ListCell<CategoryModel2> call(ListView<CategoryModel2> p) {
+
+					final ListCell<CategoryModel2> cell = new ListCell<>() {
+
+						@Override
+						protected void updateItem(CategoryModel2 t, boolean bln) {
+
+							super.updateItem(t, bln);
+
+							if (t != null) {
+								setText(t.name);
+							} else {
+								setText(null);
+							}
+						}
+
+					};
+
+					return cell;
+				}
+			});
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void companyData() {
+		try {
+
+			JSONObject responseAPI = CommonFunctions.sendHTTPRequest("http://localhost:8080/getAllCompanies", "GET", "",
+					"");
+			JSONArray arr = (JSONArray) responseAPI.get("data");
+			JSONArray arr2 = (JSONArray) responseAPI.get("data");
+			for (Object element : arr2) {
+				JSONObject new_obj2 = (JSONObject) element;
+				companyData.getItems().add(new CompanyModel(new_obj2.get("name").toString(),
+						new_obj2.get("phone").toString(), Integer.parseInt(new_obj2.get("id").toString())));
+			}
+			System.out.println(companies);
+			companyData.setCellFactory(new Callback<ListView<CompanyModel>, ListCell<CompanyModel>>() {
+
+				@Override
+				public ListCell<CompanyModel> call(ListView<CompanyModel> p) {
+
+					final ListCell<CompanyModel> cell = new ListCell<>() {
+
+						@Override
+						protected void updateItem(CompanyModel t, boolean bln) {
+							super.updateItem(t, bln);
+
+							if (t != null) {
+								setText(t.name);
+							} else {
+								setText(null);
+							}
+						}
+
+					};
+
+					return cell;
+				}
+			});
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void supplierData() {
+		try {
+			JSONObject responseAPI = CommonFunctions.sendHTTPRequest("http://localhost:8080/getAllSuppliers", "GET", "",
+					"");
+			JSONArray arr = (JSONArray) responseAPI.get("data");
+			for (Object element : arr) {
+				JSONObject new_obj = (JSONObject) element;
+				supplierData.getItems()
+						.add(new SupplierModel(new_obj.get("firstname").toString(), new_obj.get("lastname").toString(),
+								new_obj.get("phoneNumber").toString(), Integer.parseInt(new_obj.get("id").toString())));
+				suppliers.add(new SupplierModel(new_obj.get("firstname").toString(), new_obj.get("lastname").toString(),
+						new_obj.get("phoneNumber").toString(), Integer.parseInt(new_obj.get("id").toString())));
+			}
+			supplierData.setCellFactory(new Callback<ListView<SupplierModel>, ListCell<SupplierModel>>() {
+
+				@Override
+				public ListCell<SupplierModel> call(ListView<SupplierModel> p) {
+
+					final ListCell<SupplierModel> cell = new ListCell<>() {
+
+						@Override
+						protected void updateItem(SupplierModel t, boolean bln) {
+							super.updateItem(t, bln);
+
+							if (t != null) {
+								setText(t.firstname);
+							} else {
+								setText(null);
+							}
+						}
+
+					};
+
+					return cell;
+				}
+			});
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void productsData() {
+
+		JSONObject responseAPI;
+		try {
+			responseAPI = CommonFunctions.sendHTTPRequest("http://localhost:8080/getAllProducts", "GET", "", "");
+			JSONArray arr = (JSONArray) responseAPI.get("data");
+
+			for (Object element : arr) {
+				JSONObject new_obj = (JSONObject) element;
+
+				productsData.add(new ProductModel(Integer.parseInt(new_obj.get("id") + ""),
+						new_obj.get("name").toString(), new_obj.get("barcode").toString(),
+						Integer.parseInt(new_obj.get("quantity") + ""), Integer.parseInt(new_obj.get("price") + ""),
+						new_obj.get("companyFK") + "", new_obj.get("categoryFK") + "", ""));
+			}
+			productsTable.setItems(productsData);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
+	void addProduct(ActionEvent event) throws IOException, ParseException {
+		ProductModel sm = new ProductModel(product_name.getText(), barcode.getText(),
+				Integer.parseInt(product_qty.getText()), Integer.parseInt(product_price.getText()),
+				companyData.getValue().getId() + "", categoryData.getValue().getId() + "");
+		JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/registerProduct", "POST", "",
+				sm.toString());
+		JSONObject data = (JSONObject) ((JSONArray) (response.get("data"))).get(0);
+		if (Integer.parseInt(data.get("responseCode") + "") == 302) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Product Already Found");
+
+			alert.showAndWait();
+		} else {
+			int productAddedID = Integer.parseInt(((JSONObject) (data).get("product")).get("id").toString());
+			ProductSupplierModel psm = new ProductSupplierModel(productAddedID, supplierData.getValue().getId());
+			CommonFunctions.sendHTTPRequest("http://localhost:8080/registerProductSupplier", "POST", "",
+					psm.toString());
+			sm.setSupplierFK(supplierData.getValue().getId() + "");
+			sm.setId(productAddedID);
+			FilteredList<CompanyModel> filteredList = new FilteredList<>(companyData.getItems(),
+					item -> item.getId() == Integer.parseInt(companyData.getValue().getId() + ""));
+			FilteredList<SupplierModel> filteredList2 = new FilteredList<>(supplierData.getItems(),
+					item -> item.getId().toString().equals(supplierData.getValue().getId() + ""));
+			FilteredList<CategoryModel2> filteredList3 = new FilteredList<>(categoryData.getItems(),
+					item -> item.getId() == Integer.parseInt(categoryData.getValue().getId() + ""));
+
+			sm.setCompanyFK(filteredList.get(0).getName() + "");
+			sm.setCategoryFK(filteredList3.get(0).getName() + "");
+
+			if (filteredList2.size() > 0) {
+				sm.setSupplierFK(filteredList2.get(0).getFirstname() + " " + filteredList2.get(0).getLastname() + "");
+
+			}
+			productsData.add(sm);
+			productsTable.setItems(productsData);
+		}
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		categoryData();
+		companyData();
+		supplierData();
+		barcodeColumn.setCellValueFactory(new PropertyValueFactory("barcode"));
+		categoryColumn.setCellValueFactory(new PropertyValueFactory("categoryFK"));
+		companyColumn.setCellValueFactory(new PropertyValueFactory("companyFK"));
+		nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+		priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
+		qtyColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
+		supplierColumn.setCellValueFactory(new PropertyValueFactory("supplierFK"));
+		productsData();
+		for (int i = 0; i < productsData.size(); i++) {
+			int index = i;
+			FilteredList<CompanyModel> filteredList = new FilteredList<>(companyData.getItems(),
+					item -> item.getId() == Integer.parseInt(productsData.get(index).getCompanyFK()));
+			FilteredList<SupplierModel> filteredList2 = new FilteredList<>(supplierData.getItems(),
+					item -> item.getId().toString().equals(productsData.get(index).getSupplierFK()));
+			FilteredList<CategoryModel2> filteredList3 = new FilteredList<>(categoryData.getItems(),
+					item -> item.getId() == Integer.parseInt(productsData.get(index).getCategoryFK()));
+
+			productsData.get(i).setCompanyFK(filteredList.get(0).getName() + "");
+			if (filteredList2.size() > 0) {
+				productsData.get(i).setSupplierFK(
+						filteredList2.get(0).getFirstname() + " " + filteredList2.get(0).getLastname() + "");
+
+			}
+			productsData.get(i).setCategoryFK(filteredList3.get(0).getName() + "");
+
+		}
+		productsTable.setItems(productsData);
+		productsTable.setOnMouseClicked((MouseEvent event) -> {
+			if (event.getClickCount() > 1) {
+				onEdit();
+			}
+		});
+	}
+
+	@FXML
+	void searchProduct(MouseEvent event) throws IOException, ParseException {
+		String url = "";
+		if (searchProductText.getText().equals("")) {
+			url = "http://localhost:8080/getAllProducts";
+		} else {
+			url = "http://localhost:8080/searchProducts";
+		}
+		JSONObject responseAPI = CommonFunctions.sendHTTPRequest(url, "GET", searchProductText.getText(), "");
+
+		JSONArray arr = (JSONArray) responseAPI.get("data");
+		productsData.clear();
+
+		for (Object element : arr) {
+			JSONObject new_obj = (JSONObject) element;
+
+			productsData.add(new ProductModel(new_obj.get("name").toString(), new_obj.get("barcode").toString(),
+					Integer.parseInt(new_obj.get("quantity") + ""), Integer.parseInt(new_obj.get("price") + ""),
+					new_obj.get("companyFK") + "", new_obj.get("categoryFK") + "", ""));
+		}
+		for (int i = 0; i < productsData.size(); i++) {
+			int index = i;
+			FilteredList<CompanyModel> filteredList = new FilteredList<>(companyData.getItems(),
+					item -> item.getId() == Integer.parseInt(productsData.get(index).getCompanyFK()));
+			FilteredList<SupplierModel> filteredList2 = new FilteredList<>(supplierData.getItems(),
+					item -> item.getId().toString().equals(productsData.get(index).getSupplierFK()));
+			FilteredList<CategoryModel2> filteredList3 = new FilteredList<>(categoryData.getItems(),
+					item -> item.getId() == Integer.parseInt(productsData.get(index).getCategoryFK()));
+
+			productsData.get(i).setCompanyFK(filteredList.get(0).getName() + "");
+			if (filteredList2.size() > 0) {
+				productsData.get(i).setSupplierFK(
+						filteredList2.get(0).getFirstname() + " " + filteredList2.get(0).getLastname() + "");
+
+			}
+			productsData.get(i).setCategoryFK(filteredList3.get(0).getName() + "");
+
+		}
+		productsTable.setItems(productsData);
+	}
+
+	@FXML
+	void updateProduct(MouseEvent event) throws IOException, ParseException {
+
+		ProductModel cm = new ProductModel(selectedProduct.getId(), Integer.parseInt(product_qty.getText()),
+				Integer.parseInt(product_price.getText()));
+		JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/updateProduct", "PUT", "",
+				cm.toString());
+		companyData.setDisable(false);
+		product_name.setDisable(false);
+		supplierData.setDisable(false);
+		categoryData.setDisable(false);
+		barcode.setDisable(false);
+		ProductModel mp = null;
+		Integer index = -1;
+		for (int i = 0; i < productsData.size(); i++) {
+			if (productsData.get(i).getId() == selectedProduct.getId()) {
+				mp = productsData.get(i);
+				index = i;
+				mp.setQuantity(Integer.parseInt(product_qty.getText()));
+				mp.setPrice(Integer.parseInt(product_price.getText()));
+
+			}
+		}
+		productsData.remove(index);
+		productsData.add(index, mp);
+		productsTable.setItems(productsData);
+		product_qty.setText("");
+		product_price.setText("");
+
+		selectedProduct = null;
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Success");
+		alert.setHeaderText("Operation Successfull");
+		alert.setContentText("Product updated Successfully");
+
+		alert.showAndWait();
+	}
+
+	public void onEdit() {
+		// check the table's selected item and get selected item
+		if (productsTable.getSelectionModel().getSelectedItem() != null) {
+
+			selectedProduct = productsTable.getSelectionModel().getSelectedItem();
+			barcode.setDisable(true);
+			product_price.setText(selectedProduct.getPrice() + "");
+			product_qty.setText(selectedProduct.getQuantity() + "");
+			companyData.setDisable(true);
+			product_name.setDisable(true);
+			supplierData.setDisable(true);
+			categoryData.setDisable(true);
+
+		}
+	}
+
+}

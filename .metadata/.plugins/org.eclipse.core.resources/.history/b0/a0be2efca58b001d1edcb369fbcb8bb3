@@ -1,0 +1,19 @@
+package application;
+
+public class exchangeRateSingletonModel {
+
+	public static exchangeRateSingletonModel instance = null;
+	private Integer rate;
+
+	public exchangeRateSingletonModel(Integer rate) {
+		super();
+		this.rate = rate;
+	}
+
+	public exchangeRateSingletonModel getInstance() {
+		if (instance == null) {
+			instance = new exchangeRateSingletonModel();
+		}
+		return instance;
+	}
+}

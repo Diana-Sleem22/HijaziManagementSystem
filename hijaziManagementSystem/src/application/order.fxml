@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="1071.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.orderController">
+<AnchorPane fx:id="or" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="1071.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.orderController">
    <children>
-      <TextField layoutX="144.0" layoutY="51.0" prefHeight="39.0" prefWidth="236.0" promptText="Customer Name" style="-fx-background-color: #F1F1F1; -fx-background-radius: 20px;" />
-      <TableView layoutX="131.0" layoutY="282.0" prefHeight="244.0" prefWidth="758.0" stylesheets="@sidebar.css">
+      <TextField fx:id="customerName" layoutX="144.0" layoutY="51.0" prefHeight="39.0" prefWidth="236.0" promptText="Customer Name" style="-fx-background-color: #F1F1F1; -fx-background-radius: 20px;" />
+      <TableView fx:id="ordersTable" layoutX="131.0" layoutY="282.0" prefHeight="244.0" prefWidth="758.0" stylesheets="@sidebar.css">
         <columns>
-          <TableColumn prefWidth="75.0" text="Barcode" />
-          <TableColumn prefWidth="75.0" text="Poroduct Name" />
-            <TableColumn prefWidth="75.0" text="Quantity" />
-            <TableColumn prefWidth="75.0" text="Total Price" />
+          <TableColumn fx:id="orderNumber" prefWidth="75.0" text="Order Number" />
+          <TableColumn fx:id="orderAssignee" prefWidth="75.0" text="Order Assignee" />
+            <TableColumn fx:id="orderOwner" prefWidth="75.0" text="Order Owner" />
+            <TableColumn fx:id="orderDate" prefWidth="75.0" text="Order Date" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -30,14 +30,8 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="144.0" layoutY="171.0" prefHeight="39.0" prefWidth="236.0" promptText="Phone Number" style="-fx-background-color: #F1F1F1; -fx-background-radius: 20px;" />
-      <Label layoutX="144.0" layoutY="137.0" text="Phone Number">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <DatePicker layoutX="557.0" layoutY="51.0" prefHeight="39.0" prefWidth="254.0" style="-fx-background-color: #F1F1F1;" />
-      <Label layoutX="557.0" layoutY="17.0" text="For Date">
+      <DatePicker fx:id="orderForDate" layoutX="628.0" layoutY="51.0" prefHeight="39.0" prefWidth="254.0" style="-fx-background-color: #F1F1F1;" />
+      <Label layoutX="628.0" layoutY="17.0" text="For Date">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -45,15 +39,6 @@
       <Button layoutX="338.0" layoutY="57.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="36.0" style="-fx-background-color: #F1F1F1;">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../icons/magnifying-glass.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="338.0" layoutY="177.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #F1F1F1;">
-         <graphic>
-            <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/magnifying-glass.png" />
                </image>

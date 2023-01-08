@@ -1,0 +1,61 @@
+package application;
+
+public class customerModel {
+public customerModel(String firstname, String lastname, String address, String phoneNumber, int id) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.id = id;
+	}
+public customerModel(String firstname, String lastname, String address, String phoneNumber) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+private String firstname;
+private String lastname;
+private String address;
+private String phoneNumber;
+private int id;
+public String getFirstname() {
+	return firstname;
+}
+public void setFirstname(String firstname) {
+	this.firstname = firstname;
+}
+public String getLastname() {
+	return lastname;
+}
+public void setLastname(String lastname) {
+	this.lastname = lastname;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public String getPhone() {
+	return phoneNumber;
+}
+public void setPhone(String phoneNumber) {
+	this.phoneNumber = phoneNumber;
+}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+@Override
+public String toString() {
+	return "{\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname +
+			"\", \"address\":\"" +address +"\",\"email\":\"" +""+ 
+			"\", \"password\":\"" +"null"+ "\", \"phoneNumber\":\"" + phoneNumber+
+			"\", \"roleFK\":" +4+", \"id\":" +id+"}";
+}
+}

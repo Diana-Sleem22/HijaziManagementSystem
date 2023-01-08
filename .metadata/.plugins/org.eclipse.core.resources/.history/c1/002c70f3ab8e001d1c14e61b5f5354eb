@@ -1,0 +1,345 @@
+package application;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class LandingPageController implements Initializable {
+
+	@FXML
+	private Button stock;
+
+	@FXML
+	private Button Categories;
+
+	@FXML
+	private Button billing;
+
+	@FXML
+	private Button company;
+
+	@FXML
+	private StackPane contentArea;
+
+	@FXML
+	private Button supplier;
+	@FXML
+	private Button order;
+
+	@FXML
+	private Button product;
+
+	@FXML
+	private Label userName;
+	@FXML
+	private Button adduser;
+
+	@FXML
+	private ImageView stockIcon;
+	@FXML
+	private Button analytics;
+    @FXML
+    private Button categoryBtn;
+
+
+	  @FXML
+	    private Label rateError;
+
+	@FXML
+	private Button logout;
+	@FXML
+	private TextField usdRateTextValue;
+
+	@FXML
+	private Button usdRateUpdateBtn;
+
+	@FXML
+	private Text usdRateValue;
+	@FXML
+    private ImageView adduserIcon;
+	 @FXML
+	    private ImageView analyticsIcon;
+	    @FXML
+	    private ImageView backupIcon;
+
+	    @FXML
+	    private ImageView companyIcon;
+
+	    @FXML
+	    private ImageView orderIcon;
+	    
+	    @FXML
+	    private ImageView productIcon;
+
+	    @FXML
+	    private ImageView supplierIcon;
+	    
+	List<String> accessRights = new ArrayList<>();
+
+	@FXML
+	void BillingPage(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("billing.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		billing.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
+		product.setStyle("-fx-background-color:transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		product.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color: transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		categoryBtn.setStyle("-fx-background-color: transparent; ");
+	}
+    @FXML
+    void CategoryPage(javafx.event.ActionEvent actionEvent) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("categories.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color:transparent;");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color: transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		categoryBtn.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black; ");
+    }
+	@FXML
+	void ProductPage(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("products.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color: transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		
+	}
+
+	@FXML
+	void CompanyPage(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("company.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color: transparent; ");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
+		product.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color: transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		
+	}
+
+	@FXML
+	void orderPage(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("order.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color: transparent; ");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
+		supplier.setStyle("-fx-background-color: transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		
+	}
+
+	@FXML
+	void SupplierPage(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("supplier.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color: transparent; ");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		product.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		
+	}
+
+	@FXML
+	void stockPage(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("stock.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color: transparent; ");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		product.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color:transparent; ");
+		stock.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
+		
+	}
+
+
+	@FXML
+	void registration(javafx.event.ActionEvent actionEvent) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
+		contentArea.getChildren().removeAll();
+		contentArea.getChildren().setAll(root);
+		product.setStyle("-fx-background-color: transparent; ");
+		billing.setStyle("-fx-background-color: transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		product.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
+		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color:transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		
+	}
+
+
+	@FXML
+	void updateUSDRate(ActionEvent event) throws IOException, ParseException {
+		String usd=usdRateTextValue.getText();
+		if(usd.isEmpty()) {
+			rateError.setText("Please Fill the rate value");
+		}
+		else {
+		exchangeRateModel erm = new exchangeRateModel(Integer.parseInt(usdRateTextValue.getText()), 4);
+		CommonFunctions.sendHTTPRequest("http://localhost:8080/updateExchangeRate", "PUT", "", erm.toString());
+		 Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setHeaderText("Operation successful");
+			alert.setContentText("Rate Value Updated successfully");
+
+			alert.showAndWait();
+		usdRateValue.setText(usdRateTextValue.getText());
+		usdRateTextValue.setText("");
+		rateError.setText("");
+		}
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		try {
+
+			Parent root = FXMLLoader.load(getClass().getResource("billing.fxml"));
+			contentArea.getChildren().removeAll();
+			contentArea.getChildren().setAll(root);
+			UserSingletonInstance singleton = UserSingletonInstance.getInstance();
+			userName.setText(singleton.getFirstname());
+			try {
+				getExchangeRate();
+				getAccessRights();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void getExchangeRate() throws IOException, ParseException {
+		JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/getAllExchangeRates", "GET", "",
+				"");
+		JSONArray responseData = (JSONArray) response.get("data");
+		JSONObject json = (JSONObject) responseData.get(0);
+		usdRateValue.setText(json.get("exchangeRateValue") + "");
+		exchangeRateSingletonModel.getInstance().setRate(Integer.parseInt(json.get("exchangeRateValue") + ""));
+	}
+
+	public void getAccessRights() throws IOException, ParseException {
+		UserSingletonInstance singleton = UserSingletonInstance.getInstance();
+		JSONObject response = CommonFunctions
+				.sendHTTPRequest("http://localhost:8080/getAllAccessRights/" + singleton.getRoleFK(), "GET", "", "");
+		JSONArray responseData = (JSONArray) response.get("data");
+		for (Object element : responseData) {
+			accessRights.add(element + "");
+		}
+		singleton.setAccessRights(accessRights);
+		if (accessRights.indexOf("VIEW_STOCK") < 0) {
+			stock.setManaged(false);
+			stockIcon.setManaged(false);
+		}
+		if (accessRights.indexOf("ADD_PRODUCT") < 0) {
+			product.setManaged(false);
+			productIcon.setManaged(false);
+		}
+		if (accessRights.indexOf("VIEW_ORDERS") < 0) {
+			order.setManaged(false);
+			orderIcon.setManaged(false);
+		}
+		if (accessRights.indexOf("ADD_COMPANY") < 0) {
+			company.setManaged(false);
+			companyIcon.setManaged(false);
+		}
+		if (accessRights.indexOf("ADD_SUPPLIER") < 0) {
+			supplier.setManaged(false);
+			supplierIcon.setManaged(false);
+		}
+		if (accessRights.indexOf("VIEW_ANALYTICS") < 0) {
+			analytics.setManaged(false);
+			analyticsIcon.setManaged(false);
+		}
+		if (accessRights.indexOf("ADD_USER") < 0) {
+			adduser.setManaged(false);
+			adduserIcon.setManaged(false);
+		}
+		//to be continued
+	}
+
+	@FXML
+	void logoutUser(ActionEvent event) throws IOException {
+		UserSingletonInstance singleton = UserSingletonInstance.getInstance();
+		singleton.reserUser();
+
+		billing.setStyle("-fx-background-color:transparent; ");
+		product.setStyle("-fx-background-color:transparent; ");
+		company.setStyle("-fx-background-color: transparent; ");
+		product.setStyle("-fx-background-color: transparent; ");
+		adduser.setStyle("-fx-background-color: transparent; ");
+s		order.setStyle("-fx-background-color: transparent; ");
+		supplier.setStyle("-fx-background-color: transparent; ");
+		stock.setStyle("-fx-background-color: transparent; ");
+		Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+		Scene scene = new Scene(root, 643, 501);
+		Stage primaryStage = new Stage();
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Login");
+		currentStage cs = currentStage.getInstance();
+		cs.getStageView().close();
+		cs.setStageView(primaryStage);
+		primaryStage.show();
+	}
+
+}

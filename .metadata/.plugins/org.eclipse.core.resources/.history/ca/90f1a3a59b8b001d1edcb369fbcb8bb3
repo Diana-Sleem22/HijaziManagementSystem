@@ -1,0 +1,38 @@
+package application;
+
+import java.sql.Date;
+
+public class invoiceModel {
+	
+	private Integer id;
+	public invoiceModel() {
+		super();
+	}
+	private Date date;
+	private Integer userFk;
+	private Integer customerFK;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Integer getUserFk() {
+		return userFk;
+	}
+	public void setUserFk(Integer userFk) {
+		this.userFk = userFk;
+	}
+	public Integer getCustomerFK() {
+		return customerFK;
+	}
+	public void setCustomerFK(Integer customerFK) {
+		this.customerFK = customerFK;
+	}
+}

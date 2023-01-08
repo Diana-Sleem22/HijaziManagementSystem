@@ -2,14 +2,14 @@ package application;
 
 public class SupplierModel {
 
-	private Integer id;
-	 private String firstname;
-	 private String lastname;
-	 private String email;
-	 private String address;
-	 private String phoneNumber;
-	 private String password;
-	 private Integer roleFK;
+	public Integer id;
+	 public String firstname;
+	 public String lastname;
+	 public String email;
+	 public String address;
+	 public String phoneNumber;
+	 public String password;
+	 public Integer roleFK;
 	 public SupplierModel(Integer id, String firstname, String lastname, String email, String address,
 				String phoneNumber, String password, Integer roleFK) {
 
@@ -89,8 +89,6 @@ public class SupplierModel {
 	}
 	@Override
 	public String toString() {
-		return "{\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname +
-				"\", \"email\":\"" +""+"\", \"address\":\"" + ""+ "\", \"phoneNumber\":\"" + phoneNumber+
-				"\", \"password\":\"" +"null"+"\", \"roleFK\":" +2+",\"id\":" + id+"}";
+		return firstname;
 	}
 }

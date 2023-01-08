@@ -1,19 +1,23 @@
 package application;
 
 public class CategoryModel {
-	  public CategoryModel(String name) {
-		this.name = name;
-	}
-	public CategoryModel(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-	public int id;
-	    public String name;
-		public int getId() {
+	
+
+	   public Integer id;
+	   public String name;
+		  public CategoryModel(String name) {
+				
+				this.name = name;
+			}
+			public CategoryModel(Integer id, String name) {
+				
+				this.id = id;
+				this.name = name;
+			}
+		public Integer getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(Integer id) {
 			this.id = id;
 		}
 		public String getName() {
@@ -24,6 +28,7 @@ public class CategoryModel {
 		}
 		@Override
 		public String toString() {
-			return "{\"name\":\"" + name + "\",  \"id\":" + id + "}";
+			return "{\"id\":" + id + ",\"name\":\"" + name +"\"}";
 		}
+		
 }

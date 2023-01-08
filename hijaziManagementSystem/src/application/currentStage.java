@@ -1,0 +1,28 @@
+package application;
+
+import javafx.stage.Stage;
+
+public class currentStage {
+	private  static currentStage stage;
+	private Stage stageView;
+
+	 public static currentStage getInstance() {
+		 if(stage == null) {
+			 stage = new currentStage();
+		 }
+		 return stage;
+	 }
+
+	public Stage getStageView() {
+		return stageView;
+	}
+
+	public void setStageView(Stage stageView) {
+		this.stageView = stageView;
+	}
+
+	public currentStage() {
+		super();
+	}
+
+}

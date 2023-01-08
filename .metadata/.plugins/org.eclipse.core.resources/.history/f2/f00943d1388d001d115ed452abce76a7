@@ -1,0 +1,51 @@
+package application;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
+public class invoiceModel {
+	
+	public invoiceModel(LocalDate currentDate, Integer userFk, Integer customerFK) {
+		super();
+		this.date = currentDate;
+		this.userFK = userFk;
+		this.customerFK = customerFK;
+	}
+	public invoiceModel() {
+		super();
+	}
+	
+	private Integer id;
+	
+	private LocalDate date;
+	private Integer userFK;
+	private Integer customerFK;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	public Integer getUserFK() {
+		return userFK;
+	}
+	public void setUserFK(Integer userFK) {
+		this.userFK = userFK;
+	}
+	public Integer getCustomerFK() {
+		return customerFK;
+	}
+	public void setCustomerFK(Integer customerFK) {
+		this.customerFK = customerFK;
+	}
+	@Override
+	public String toString() {
+		return "{\"date\":\"" + date + "\",\"userFK\":" + userFK + ", \"customerFK\":" + customerFK + "}";
+	}
+}

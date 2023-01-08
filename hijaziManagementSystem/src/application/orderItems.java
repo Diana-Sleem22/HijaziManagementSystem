@@ -1,0 +1,57 @@
+package application;
+
+public class orderItems {
+	public orderItems() {
+
+	}
+
+	public orderItems(Integer productFK, Integer product_quantity, Integer orderFK) {
+		super();
+		this.productFK = productFK;
+		this.product_quantity = product_quantity;
+		this.orderFK = orderFK;
+	}
+
+	private Integer id;
+	private Integer productFK;
+	private Integer product_quantity;
+	private Integer orderFK;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getProductFK() {
+		return productFK;
+	}
+
+	public void setProductFK(Integer productFK) {
+		this.productFK = productFK;
+	}
+
+	public Integer getProduct_quantity() {
+		return product_quantity;
+	}
+
+	public void setProduct_quantity(Integer product_quantity) {
+		this.product_quantity = product_quantity;
+	}
+
+	public Integer getOrderFK() {
+		return orderFK;
+	}
+
+	public void setOrderFK(Integer orderFK) {
+		this.orderFK = orderFK;
+	}
+
+	@Override
+	public String toString() {
+		return "{\"productFK\":" + productFK + ", \"product_quantity\":" + product_quantity + ", \"orderFK\":" + orderFK
+				+ "}";
+	}
+}
