@@ -268,6 +268,11 @@ public class billingController implements Initializable {
 
 			alert.showAndWait();
 		} else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setContentText("Order Created Successfully");
+
+			alert.showAndWait();
 			LocalDate localDate = orderDate.getValue();
 			Date sqlDate = Date.valueOf(localDate);
 			invoiceModel inv = new invoiceModel(sqlDate, UserSingletonInstance.getInstance().getId(),

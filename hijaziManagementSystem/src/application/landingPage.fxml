@@ -31,7 +31,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Text>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="966.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="169.0">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="852.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="195.0">
                <image>
                   <Image url="@../../icons/profile.png" />
                </image>
@@ -42,7 +42,7 @@
                </font>
             </Label>
             <Text fx:id="usdRateValue" layoutX="655.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="96.80004882812497" />
-            <Label fx:id="userName" layoutX="924.0" layoutY="31.0" prefHeight="18.0" prefWidth="111.0" text="Diana Sleem" />
+            <Label fx:id="userName" layoutX="884.0" layoutY="31.0" prefHeight="18.0" prefWidth="97.0" text="Diana Sleem" />
             <Button fx:id="usdRateUpdateBtn" layoutX="368.0" layoutY="28.0" mnemonicParsing="false" onAction="#updateUSDRate" style="-fx-background-color: #66c9ff; -fx-background-radius: 20px;" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />

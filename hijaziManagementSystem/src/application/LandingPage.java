@@ -15,6 +15,7 @@ public class LandingPage extends Application{
 			Parent root = FXMLLoader.load(getClass().getResource("landingPage.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("C:\\Users\\USER\\Music\\hijaziManagementSystem\\hijaziManagementSystem\\icons\\loginLogo.png"));
 			primaryStage.setTitle("Hijazi Management System");
 
 

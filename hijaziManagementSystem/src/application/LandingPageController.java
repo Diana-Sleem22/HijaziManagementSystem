@@ -219,7 +219,7 @@ public class LandingPageController implements Initializable {
 		adduser.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black;");
 		order.setStyle("-fx-background-color: transparent; ");
 		supplier.setStyle("-fx-background-color:transparent; ");
-
+		categoryBtn.setStyle("-fx-background-color: transparent;");
 		
 	}
 

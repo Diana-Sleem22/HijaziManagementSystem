@@ -111,14 +111,10 @@ public class RegistrationController implements Initializable {
 		}
 		if (!admin.isSelected() && !seller.isSelected()) {
 			usertype.setText("user type is required");
-		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Success");
-			alert.setHeaderText("Operation successful");
-			alert.setContentText("User Added successfully.");
-
-			alert.showAndWait();
-
+		}
+		
+		else {
+		
 			UserModel user = new UserModel(firstname.getText(), lastname.getText(), email.getText(), "", "",
 					password.getText(), admin.isSelected() ? 1 : 3);
 			JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/registerUser", "POST", "",
@@ -131,17 +127,32 @@ public class RegistrationController implements Initializable {
 				alert2.setContentText("User Already Found");
 				alert2.showAndWait();
 			} else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Success");
+				alert.setHeaderText("Operation successful");
+				alert.setContentText("User Added successfully.");
+
+				alert.showAndWait();
 				firstname.setText("");
 				lastname.setText("");
 				password.setText("");
 				email.setText("");
+				confirmpass.setText("");
 				confirmpassword.setText("");
-
+				checkpass.setText("");
+				mail.setText("");
+				pass.setText("");
+				confirmpass.setText("");
+				fname.setText("");
+				usertype.setText("");
+				lname.setText("");
 				admin.setSelected(false);
 				seller.setSelected(false);
 			}
 
 		}
+	
+
 
 	}
 

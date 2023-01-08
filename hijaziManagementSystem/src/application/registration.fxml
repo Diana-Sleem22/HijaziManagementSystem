@@ -42,13 +42,8 @@
             <Insets left="40.0" />
          </padding>
       </PasswordField>
-      <PasswordField fx:id="confirmpassword" layoutX="199.0" layoutY="387.0" prefHeight="39.0" prefWidth="284.0" promptText="Confirm Password" style="-fx-background-color: #F1F1F1;">
-         <padding>
-            <Insets left="40.0" />
-         </padding>
-      </PasswordField>
-      <CheckBox fx:id="admin" layoutX="253.0" layoutY="470.0" mnemonicParsing="false" text="Admin" textFill="#030303" />
-      <CheckBox fx:id="seller" layoutX="364.0" layoutY="470.0" mnemonicParsing="false" text="Seller" />
+      <CheckBox fx:id="admin" layoutX="253.0" layoutY="425.0" mnemonicParsing="false" text="Admin" textFill="#030303" />
+      <CheckBox fx:id="seller" layoutX="364.0" layoutY="425.0" mnemonicParsing="false" text="Seller" />
       <Button fx:id="registerBtn" layoutX="230.0" layoutY="536.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="39.0" prefWidth="203.0" style="-fx-background-color: #66c9ff; -fx-background-radius: 20px;" text="Add" textFill="WHITE">
          <font>
             <Font name="Book Antiqua Bold" size="22.0" />
@@ -72,11 +67,6 @@
       <ImageView fitHeight="29.0" fitWidth="24.0" layoutX="207.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Downloads/id-card%20(1).png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="29.0" fitWidth="24.0" layoutX="209.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Downloads/password%20(1).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="209.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">

@@ -16,12 +16,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class orderController implements Initializable {
@@ -114,24 +116,36 @@ public class orderController implements Initializable {
 
 				TableColumn<orderItemsDetails, String> productNameColumn = new TableColumn<>("Product Name");
 
-				TableColumn<orderItemsDetails, Integer> totalPriceColumn = new TableColumn<>("Total Price");
+				TableColumn<orderItemsDetails, Integer> totalPriceColumn = new TableColumn<>("Total Price USD");
 
-				;
+				
 				productNameColumn.setCellValueFactory(new PropertyValueFactory("name"));
 				QuantityColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
 				priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
 				totalPriceColumn.setCellValueFactory(new PropertyValueFactory("totalPriceUsd"));
+				
+				productNameColumn.setStyle("-fx-background-color:  white");
+				QuantityColumn.setStyle("-fx-background-color:  white");
+				priceColumn.setStyle("-fx-background-color: white");
+				totalPriceColumn.setStyle("-fx-background-color: white");
+				
 				Stage stage = new Stage();
 				orderItemsTable.getColumns().add(productNameColumn);
 				orderItemsTable.getColumns().add(QuantityColumn);
 				orderItemsTable.getColumns().add(priceColumn);
 				orderItemsTable.getColumns().add(totalPriceColumn);
-
-				Scene s = new Scene(orderItemsTable, 400, 400);
+				 Pane pane = new Pane();
+			        
+			        // Create a label
+			        Label label = new Label();
+			        label.setText("Hello World");
+			        
+			        // Add the label to the pane
+			        pane.getChildren().add(label);
+				Scene s = new Scene(orderItemsTable,370, 200);
 				stage.setResizable(false);
-				orderItemsTable.setPrefSize(300, 200);
 				stage.setScene(s);
-
+              
 				stage.setTitle("Customers");
 				int id = ordersTable.getSelectionModel().getSelectedItem().getOrderID();
 				JSONObject responseAPI;

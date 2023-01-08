@@ -73,6 +73,12 @@ public class supplierController implements Initializable {
 				alert2.showAndWait();
 
 			} else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Success");
+				alert.setHeaderText("Operation Successfull");
+				alert.setContentText("Supplier added Successfully");
+
+				alert.showAndWait();
 				int userAddedID = Integer
 						.parseInt(((JSONObject) ((JSONObject) ((JSONArray) (response.get("data"))).get(0)).get("user"))
 								.get("id").toString());
@@ -82,12 +88,7 @@ public class supplierController implements Initializable {
 				firstname.setText("");
 				lastname.setText("");
 				phoneNumber.setText("");
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Success");
-				alert.setHeaderText("Operation Successfull");
-				alert.setContentText("Supplier added Successfully");
-
-				alert.showAndWait();
+			
 			}
 
 		}
@@ -107,13 +108,7 @@ public class supplierController implements Initializable {
 
 	@FXML
 	void updateSupplier(ActionEvent event) throws IOException, ParseException {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Success");
-		alert.setHeaderText("Operation Successfull");
-		alert.setContentText("Supplier updated Successfully");
-
-		alert.showAndWait();
-
+		
 		SupplierModel2 cm = new SupplierModel2(firstname.getText(), lastname.getText(), phoneNumber.getText(),
 				Integer.parseInt(selectedSupplier.getId() + ""));
 		JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/updateUser", "PUT", "",
@@ -126,6 +121,13 @@ public class supplierController implements Initializable {
 			alert2.setContentText("User Already Found");
 			alert2.showAndWait();
 		} else if(!responseData.equals(responseData)) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setHeaderText("Operation Successfull");
+			alert.setContentText("Supplier updated Successfully");
+
+			alert.showAndWait();
+
 			int index = data.indexOf(selectedSupplier);
 			data.remove(index);
 			data.add(index, cm);

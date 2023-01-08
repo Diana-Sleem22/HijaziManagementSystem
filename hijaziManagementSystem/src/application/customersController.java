@@ -95,16 +95,12 @@ public class customersController implements Initializable {
 		}
 
 		else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Success");
-			alert.setHeaderText("Operation Successfull");
-			alert.setContentText("Customer added Successfully");
-
-			alert.showAndWait();
+			
 			customerModel sm = new customerModel(firstname.getText(), lastname.getText(), address.getText(),
 					phonenumber.getText());
 			JSONObject response = CommonFunctions.sendHTTPRequest("http://localhost:8080/registerUser", "POST", "",
 					sm.toString());
+			
 			JSONObject responseData = (JSONObject) ((JSONArray) (response.get("data"))).get(0);
 			if (Integer.parseInt(responseData.get("responseCode") + "") == 302) {
 				Alert alert2 = new Alert(AlertType.ERROR);
@@ -113,6 +109,12 @@ public class customersController implements Initializable {
 				alert2.setContentText("User Already Found");
 				alert2.showAndWait();
 			} else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Success");
+				alert.setHeaderText("Operation Successfull");
+				alert.setContentText("Customer added Successfully");
+
+				alert.showAndWait();
 				data.add(new customerModel(firstname.getText().toString(), lastname.getText().toString(),
 						address.getText().toString(), phonenumber.getText().toString()));
 				customerTable.setItems(data);
